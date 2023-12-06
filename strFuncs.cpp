@@ -21,5 +21,5 @@ bool isPalindrome(const string s1, int start = 0, int end = -1){
     if (tolower(s1[start])!=tolower(s1[end])){
     return false;
     }
-    return isPalindrome(str, start + 1, end - 1);
+    return isPalindrome(s1, start + 1, end - 1);
 }
