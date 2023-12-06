@@ -5,7 +5,7 @@
 using namespace std;
 
 
-bool isPalindrome(const string s1, int start = 1, int end = -1);
+bool isPalindrome(const string s1);
 
 
 #endif //STRFUNCS_H
