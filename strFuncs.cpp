@@ -10,7 +10,16 @@ using namespace std;
  * Palindromes are NOT case-sensitive - "RaCecaR" is a valid palindrome
  *
  *You should provide a recursive solution*/
-bool isPalindrome(const string s1){
+bool isPalindrome(const string s1, int start = 0, int end = -1){
     //STUB: Replace the following with the correct code.
-    return true;
+    if (end == -1) {
+        end = s1.length() - 1;
+    }
+    if (start >= end) {
+        return true;
+    }
+    if (tolower(s1[start])!=tolower(s1[end])){
+    return false;
+    }
+    return isPalindrome(str, start + 1, end - 1);
 }
