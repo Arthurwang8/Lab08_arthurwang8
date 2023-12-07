@@ -112,10 +112,8 @@ Node* recursiveElementwiseSum(Node *head1, Node *head2) {
     int value1 = (head1 == nullptr) ? 0 : head1->data;
     int value2 = (head2 == nullptr) ? 0 : head2->data;
 
-    // Create a new node with the sum of current values
     Node* newNode = new Node(value1 + value2);
 
-    // Recur with the rest of the lists
     newNode->next = recursiveElementwiseSum((head1 == nullptr) ? nullptr : head1->next, (head2 == nullptr) ? nullptr : head2->next);
 
     return newNode;
