@@ -40,9 +40,13 @@ int recursiveLargestValue(Node* head) {
  * Return &n3
  */
 Node* recursiveFindKthNode(Node *head, int k){
-    return NULL;
-    //STUB: edit with the correct output, according to the lab instructions, using recursion
-}
+    if (head == nullptr || k <= 0) {
+        return nullptr;
+    }
+    if (k == 1) {
+        return head;
+    }
+    return recursiveFindKthNode(head->next, k - 1);}
 
 
 /*Given the head of a linked list, delete the kth node from the linked list
@@ -55,8 +59,18 @@ Node* recursiveFindKthNode(Node *head, int k){
 * New list should look like this: n1 -> n3 -> n4
 */
 Node* recursiveDeleteKthNode(Node *head, int k) {
-    return NULL;
-    //STUB: edit with the correct output, according to the lab instructions, using recursion
+    if (head == nullptr || k <= 0) {
+        return nullptr;
+    }
+
+    if (k == 1) {
+        Node* newHead = head->next;
+        delete head;
+        return newHead;
+    }
+
+    head->next = recursiveDeleteKthNode(head->next, k - 1);
+    return head;
 }
 
 
@@ -69,9 +83,18 @@ Node* recursiveDeleteKthNode(Node *head, int k) {
 * Delete n1, n2 and return &n3
 */
 Node* recursiveRemoveKFromFront(Node *head, int k) {
-    return NULL;
-    //STUB: edit with the correct output, according to the lab instructions, using recursion
-}
+    if (head == nullptr || k <= 0) {
+        return nullptr;
+    }
+
+    if (k == 1) {
+        Node* newHead = head->next;
+        delete head;
+        return newHead;
+    }
+
+    head->next = recursiveRemoveKFromFront(head->next, k - 1);
+    return head;}
 
 
 /*Given two linked lists, return a NEW linked-list where each element is the sum of the corresponding elements of the input
@@ -82,8 +105,20 @@ Node* recursiveRemoveKFromFront(Node *head, int k) {
  * Return &head of the linked list 5 -> 7 -> 9 -> 12
  */
 Node* recursiveElementwiseSum(Node *head1, Node *head2) {
-    return NULL;
-    //STUB: edit with the correct output, according to the lab instructions, using recursion
+    if (head1 == nullptr && head2 == nullptr) {
+        return nullptr;
+    }
+
+    int value1 = (head1 == nullptr) ? 0 : head1->data;
+    int value2 = (head2 == nullptr) ? 0 : head2->data;
+
+    // Create a new node with the sum of current values
+    Node* newNode = new Node(value1 + value2);
+
+    // Recur with the rest of the lists
+    newNode->next = recursiveElementwiseSum((head1 == nullptr) ? nullptr : head1->next, (head2 == nullptr) ? nullptr : head2->next);
+
+    return newNode;
 }
 
 
