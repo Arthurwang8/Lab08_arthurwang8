@@ -12,7 +12,10 @@ using namespace std;
 //return sum of all values in linked list using a recursive approach
 //if head is null return 0
 int recursiveSum(Node* head) {
-  return -42;
+    if (head == nullptr) {
+        return 0;
+    }
+    return head->data + recursiveSum(head->next);
 }
 
 
@@ -21,7 +24,11 @@ int recursiveSum(Node* head) {
 //you may assume the list has at least one element
 int recursiveLargestValue(Node* head) {
 
-  return -42;
+    if (head == nullptr) {
+        return INT_MIN;
+    }
+    int restMax = recursiveLargestValue(head->next);
+    return std::max(head->data, restMax);
 }
 
 
