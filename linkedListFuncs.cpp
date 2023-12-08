@@ -118,7 +118,8 @@ Node* recursiveElementwiseSum(Node *head1, Node *head2) {
     return head1;
   }
 
-  Node* newNode = new Node(head1->data + head2->data);
+  Node* newNode = new Node();
+  newNode->data = head1->data + head2->data;
 
   newNode->next = recursiveElementwiseSum(head1->next, head2->next);
 
