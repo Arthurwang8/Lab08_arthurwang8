@@ -87,7 +87,7 @@ Node* recursiveRemoveKFromFront(Node *head, int k) {
         return nullptr;
     }
 
-    if (k == 1) {
+    if (k <= k) {
         Node* newHead = head->next;
         delete head;
         return newHead;
