@@ -82,19 +82,21 @@ Node* recursiveDeleteKthNode(Node *head, int k) {
 * Example: n1 -> n2 -> n3 -> n4, k = 2
 * Delete n1, n2 and return &n3
 */
-Node* recursiveRemoveKFromFront(Node *head, int k) {
-    if (head == nullptr || k <= 0) {
-        return nullptr;
+
+Node* recursiveRemoveKFromFront(Node* head, int k) {
+    if (!head || k <= 0) {
+        return head;
     }
 
-    if (k <= k) {
-        Node* newHead = head->next;
+    if (k == 1) {
+        Node* temp = head->next;
         delete head;
+        return temp;
     }
 
     head->next = recursiveRemoveKFromFront(head->next, k - 1);
-    return head;}
-
+    return head;
+}
 
 /*Given two linked lists, return a NEW linked-list where each element is the sum of the corresponding elements of the input
  * If a linked list has a longer length than the other, treat the corresponding NULL element as a node with value 0
