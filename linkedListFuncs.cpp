@@ -88,15 +88,16 @@ Node* recursiveRemoveKFromFront(Node* head, int k) {
         return head;
     }
 
-    if (k == 1) {
-        Node* temp = head->next;
-        delete head;
-        return temp;
-    }
 
-    head->next = recursiveRemoveKFromFront(head->next, k - 1);
-    return head;
+  Node *temp = head; 
+  head = head->next; 
+  delete temp; 
+
+    return recursiveRemoveKFromFront(head, k - 1);
+
 }
+
+
 
 /*Given two linked lists, return a NEW linked-list where each element is the sum of the corresponding elements of the input
  * If a linked list has a longer length than the other, treat the corresponding NULL element as a node with value 0
