@@ -90,7 +90,6 @@ Node* recursiveRemoveKFromFront(Node *head, int k) {
     if (k <= k) {
         Node* newHead = head->next;
         delete head;
-        return newHead;
     }
 
     head->next = recursiveRemoveKFromFront(head->next, k - 1);
